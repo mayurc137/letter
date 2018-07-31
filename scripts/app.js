@@ -18,6 +18,10 @@ var hash = window.location.hash;
 var content;
 var contentUpdated = false;
 var interval;
+var parentLink = `https://mayurc137.github.io/letter`
+var link;
+var shortenAPIKey = 'AIzaSyCrePefFYUjPJL32Q92x-KdGC_SqWmDUgE';
+
 
 if(hash){
     data = href.slice(href.indexOf('#') + 1).split('?');    
@@ -118,6 +122,22 @@ var domReady = function () {
         })
     });*/
 
+    $("#generate-link").click(()=>{
+        log && console.log("Generating the link");
+        var hash = window.location.hash;
+        if (content && content.length && link != `${parentLink}/${hash}`){
+            link = `${parentLink}/${hash}`;
+            log && console.log(link);
+            $(".progress").show();
+            shortenLink(link,(shortLink)=>{
+                log && console.log(shortLink);
+            });
+        }else{
+            invokeSnackbar('Ooop!! No content?')
+        }
+        
+    })
+
     interval = setInterval(()=>{
         if(contentUpdated){
             log && console.log('Content Updated This instance');
@@ -211,3 +231,58 @@ function handleInput(e,log = false) {
 }
 
 
+var invokeSnackbar = (text) => {
+    const MDCSnackbar = mdc.snackbar.MDCSnackbar;
+    const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
+    const dataObj = {
+        message: text,
+        actionText: 'Ok',
+        actionHandler: function () {
+            log && console.log('my cool function');
+        }
+    };
+    snackbar.show(dataObj);
+}
+
+var shortenLink = (link) =>{
+    log && console.log(link);
+
+    $.ajax({
+        type: "POST",
+        url: `https://www.googleapis.com/urlshortener/v1/url?key=${shortenAPIKey}`,
+        contentType: "application/json; charset=utf-8",
+        data:JSON.stringify({longUrl:link}),
+        success: function (data, text){
+            log && console.log(data);
+        },
+        dataType: 'json',
+        error: function (request, status, error) {
+            log && console.log(request.responseText);
+        }
+    });
+
+
+    /*$.post(`https://www.googleapis.com/urlshortener/v1/url?key=${shortenAPIKey}`,
+        {
+            longUrl: link
+        },
+        function (status) {
+            log && console.log(status);
+            //callback(status);
+        },
+        function (error){
+            log && console.log(error);
+        });*/
+}
+
+/*
+curl https://www.googleapis.com/urlshortener/v1/url\?key\=AIzaSyCrePefFYUjPJL32Q92x-KdGC_SqWmDUgE \
+-H 'Content-Type: application/json' \
+-d '{"longUrl": "http://www.google.com/"}'
+
+
+curl https://www.googleapis.com/urlshortener/v1/url\?key\=AIzaSyCrePefFYUjPJL32Q92x-KdGC_SqWmDUgE \
+-H 'Content-Type: application/json' \
+-d '{"longUrl": "https://mayurc137.github.io/letter/"}'
+
+*/

@@ -91,13 +91,20 @@
             </div>
         </section>
     </main>
-    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded" aria-label="Favorite">
+    <button id="generate-link" class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded" aria-label="Favorite">
         <i class="mdc-fab__icon material-icons">link</i>
         <span class="mdc-fab__label">Link</span>
     </button>
+    <div id="mdc-align-start-js-snackbar" class="mdc-snackbar mdc-snackbar--align-start demo-hidden" aria-live="assertive" aria-atomic="true"
+        aria-hidden="true">
+        <div class="mdc-snackbar__text"></div>
+        <div class="mdc-snackbar__action-wrapper">
+            <button type="button" class="mdc-snackbar__action-button"></button>
+        </div>
+    </div>
 </body>
 
-<script type="text/javascript" src="scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/lzma_worker-min.js"></script>
 <script type="text/javascript" src="scripts/data.js"></script>
 <script type="text/javascript" src="scripts/app.js"></script>
