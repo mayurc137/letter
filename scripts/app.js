@@ -20,7 +20,7 @@ var contentUpdated = false;
 var interval;
 var parentLink = `https://mayurc137.github.io/letter`
 var link;
-var shortenAPIKey = 'AIzaSyCrePefFYUjPJL32Q92x-KdGC_SqWmDUgE';
+
 
 
 if(hash){
@@ -246,43 +246,19 @@ var invokeSnackbar = (text) => {
 
 var shortenLink = (link) =>{
     log && console.log(link);
-
+    var encoded = encodeURIComponent(link);
+    console.log(encoded);
     $.ajax({
-        type: "POST",
-        url: `https://www.googleapis.com/urlshortener/v1/url?key=${shortenAPIKey}`,
-        contentType: "application/json; charset=utf-8",
-        data:JSON.stringify({longUrl:link}),
+        type: "GET",
+        url: `http://tinyurl.com/api-create.php?url=${encoded}`,
         success: function (data, text){
             log && console.log(data);
         },
-        dataType: 'json',
         error: function (request, status, error) {
             log && console.log(request.responseText);
         }
     });
 
 
-    /*$.post(`https://www.googleapis.com/urlshortener/v1/url?key=${shortenAPIKey}`,
-        {
-            longUrl: link
-        },
-        function (status) {
-            log && console.log(status);
-            //callback(status);
-        },
-        function (error){
-            log && console.log(error);
-        });*/
+   
 }
-
-/*
-curl https://www.googleapis.com/urlshortener/v1/url\?key\=AIzaSyCrePefFYUjPJL32Q92x-KdGC_SqWmDUgE \
--H 'Content-Type: application/json' \
--d '{"longUrl": "http://www.google.com/"}'
-
-
-curl https://www.googleapis.com/urlshortener/v1/url\?key\=AIzaSyCrePefFYUjPJL32Q92x-KdGC_SqWmDUgE \
--H 'Content-Type: application/json' \
--d '{"longUrl": "https://mayurc137.github.io/letter/"}'
-
-*/
