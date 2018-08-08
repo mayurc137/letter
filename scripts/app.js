@@ -250,7 +250,7 @@ var shortenLink = (link) =>{
     console.log(encoded);
     $.ajax({
         type: "GET",
-        url: `http://tinyurl.com/api-create.php?url=${encoded}`,
+        url: `https://tinyurl.com/api-create.php?url=${encoded}`,
         success: function (reponse){
             log && console.log(response);
         },
