@@ -111,6 +111,8 @@ var domReady = function () {
             initDocument(data,(content)=>{
                 log && console.log("Init Complete");
                 log && console.log(content);
+                titleDOM.innerHTML = data[0];
+                contentDOM.innerHTML = content;
             });
         break;
     }
@@ -246,13 +248,13 @@ var invokeSnackbar = (text) => {
 
 var shortenLink = (link) =>{
     log && console.log(link);
-    var encoded = encodeURIComponent(link);
-    console.log(encoded);
     $.ajax({
-        type: "GET",
-        url: `https://tinyurl.com/api-create.php?url=${encoded}`,
-        success: function (reponse){
-            log && console.log(response);
+        type: "POST",
+        url: `https://c137apis.herokuapp.com/shorten`,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ longUrl: link }),
+        success: function (data,text){
+            log && console.log(data);
         },
         error: function (request, status, error) {
             log && console.log(request.responseText);

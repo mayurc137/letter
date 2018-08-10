@@ -43,9 +43,10 @@ p{
 }
 
 .content-container{
-    min-height:570px;
+    min-height:720px;
     padding:32px;
     padding-right:60px;
+    background: #EFE7CE;
 }
 
 
@@ -58,9 +59,23 @@ p{
 
 #title{
     margin-top:60px;
-    margin-bottom:24px;
+    margin-bottom:60px;
+    font-family:zapfino,Cambria,cursive;
+    font-weight: bold;
 }
 
+#content{
+    font-family:zapfino,Cambria,cursive;
+    font-weight: bold;
+    line-height: 2.4em;
+}
+
+#annotations {
+    margin-top:60px;
+    font-family: zapfino, Cambria, cursive;
+    font-weight: bold;
+    line-height: 2.4em;
+}
 #title-placeholder{
     pointer-events: none;
     color: rgba(0, 0, 0, 0.4);
