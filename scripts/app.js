@@ -108,9 +108,10 @@ var domReady = function () {
             updateLink(null,null);
         break;
         case 'view':
-            initDocument(data,(content)=>{
+            initDocument(data,(init_content)=>{
                 log && console.log("Init Complete");
-                log && console.log(content);
+                log && console.log(init_content);
+                content = init_content;
                 titleDOM.innerHTML = data[0].split('_').join(' ');
                 contentDOM.innerHTML = content;
                 $("#title").focusout();
@@ -126,10 +127,11 @@ var domReady = function () {
         })
     });*/
 
-    $("#generate-link").click(()=>{
+    $(".generate-link").click(()=>{
         log && console.log("Generating the link");
+        log && console.log(content);
         var hash = window.location.hash;
-        if (content && content.length && link != `${parentLink}/${hash}`){
+        if(content && content.length && link != `${parentLink}/${hash}`){
             link = `${parentLink}/${hash}`;
             log && console.log(link);
             $(".progress").show();
@@ -185,20 +187,41 @@ var initDocument = (data,callback) =>{
 
 function updateLink(title, zip, push) {
     log && console.log("Updating Link");
-    log && console.log(title);
-    log && console.log(zip);
+    //log && console.log(title);
+    //log && console.log(zip);
     if (title) title = encodeURIComponent(title.trim().replace(/\s/g, "_"));
     var url;
+    var hrefSplit = location.href.split('/');
+
     if (zip && zip.length) {
-        url = "/#" + (title || "untitled") + "?" + zip;
+        if(hrefSplit[3] == 'letter'){
+            url = "#" + (title || "untitled") + "?" + zip;
+        }else{
+            url = "letter/#" + (title || "untitled") + "?" + zip;
+        }
+        
     } else if(title && !(zip && zip.length)){
-        url = "/#" + (title || "untitled") + "?";
-    }else if(!title && !(zip && zip.length)){
-        url = "letter/#create";
+        if (hrefSplit[3] == 'letter') {
+            url = "/#" + (title || "untitled") + "?";
+        }else{
+            url = "letter/#" + (title || "untitled") + "?";
+        }
+    }else{
+        if (hrefSplit[3] == 'letter') {
+            url = "/#";
+        } else {
+            url = "letter/#create"
+        }
     }
-    log && console.log(url);
+
+    //log && console.log(url);
+    
+    
+    console.log(hrefSplit);
     var hash = location.hash;
-    if (!hash || !hash.length) {
+    console.log(hash);
+    window.history.replaceState({ "content": content }, null, url);
+    /*if (!hash || !hash.length) {
         log && console.log(hash);
         log && console.log("If State");
         window.history.pushState({"content":content}, null, url);
@@ -206,7 +229,7 @@ function updateLink(title, zip, push) {
         log && console.log(hash);
         log && console.log("Else State");
         window.history.replaceState({"content":content}, null, url);
-    }
+    }*/
     var length = location.href.length;
     log && console.log(`Total size of the document: ${length} bytes`);
     /*QS("#length").innerText = length + " bytes";
@@ -236,6 +259,7 @@ function handleInput(e,log = false) {
 
 
 var invokeSnackbar = (text) => {
+    log && console.log("Invoke Snackbar")
     const MDCSnackbar = mdc.snackbar.MDCSnackbar;
     const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
     const dataObj = {
