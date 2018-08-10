@@ -210,9 +210,9 @@ function updateLink(title, zip, push) {
         }
     }else{
         if (hrefSplit[3] == 'letter') {
-            url = "letter/#create";
+            url = "#create";
         } else {
-            url = "/#create"
+            url = "letter/#create"
         }
     }
 
@@ -222,10 +222,11 @@ function updateLink(title, zip, push) {
     
     var hash = location.hash;
     console.log(hash);
-    
+    console.log("Changes");
     if (!hash || !hash.length) {
         log && console.log(hash);
         log && console.log("If State");
+        url = "letter/#create";
         window.history.pushState({"content":content}, null, url);
     } else {
         log && console.log(hash);
