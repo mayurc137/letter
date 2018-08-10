@@ -342,7 +342,7 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     .fav-mobile {
          display: inline-flex;
          position:fixed;
-         bottom: 5.5rem;
+         bottom: 1.5rem;
          right: 1.5rem;
          
     }
