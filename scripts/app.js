@@ -195,14 +195,14 @@ function updateLink(title, zip, push) {
     console.log(hrefSplit);
     if (zip && zip.length) {
         if(hrefSplit[3] == 'letter'){
-            url = "/#" + (title || "untitled") + "?" + zip;
+            url = "/letter/#" + (title || "untitled") + "?" + zip;
         }else{
             url = "/letter/#" + (title || "untitled") + "?" + zip;
         }
         
     } else if(title && !(zip && zip.length)){
         if(hrefSplit[3] == 'letter'){
-            url = "/#" + (title || "untitled") + "?";
+            url = "/letter/#" + (title || "untitled") + "?";
         }else{
             url = "/letter/#" + (title || "untitled") + "?";
         }
