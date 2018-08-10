@@ -194,7 +194,7 @@ function updateLink(title, zip, push) {
     
     var hrefSplit = location.href.split('/');
     console.log(hrefSplit);
-    
+
     if (zip && zip.length) {
         if(hrefSplit[3] == 'letter'){
             url = "#" + (title || "untitled") + "?" + zip;
@@ -210,9 +210,9 @@ function updateLink(title, zip, push) {
         }
     }else{
         if (hrefSplit[3] == 'letter') {
-            url = "/#create";
+            url = "letter/#create";
         } else {
-            url = "letter/#create"
+            url = "/#create"
         }
     }
 
