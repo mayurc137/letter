@@ -191,42 +191,33 @@ function updateLink(title, zip, push) {
     //log && console.log(zip);
     if (title) title = encodeURIComponent(title.trim().replace(/\s/g, "_"));
     var url;
-    
     var hrefSplit = location.href.split('/');
     console.log(hrefSplit);
-
     if (zip && zip.length) {
         if(hrefSplit[3] == 'letter'){
-            url = "#" + (title || "untitled") + "?" + zip;
+            url = "/letter/#" + (title || "untitled") + "?" + zip;
         }else{
-            url = "letter/#" + (title || "untitled") + "?" + zip;
+            url = "/letter/#" + (title || "untitled") + "?" + zip;
         }
         
     } else if(title && !(zip && zip.length)){
-        if (hrefSplit[3] == 'letter') {
-            url = "/#" + (title || "untitled") + "?";
+        if(hrefSplit[3] == 'letter'){
+            url = "/letter/#" + (title || "untitled") + "?";
         }else{
-            url = "letter/#" + (title || "untitled") + "?";
+            url = "/letter/#" + (title || "untitled") + "?";
         }
+        
     }else{
-        if (hrefSplit[3] == 'letter') {
-            url = "#create";
-        } else {
-            url = "letter/#create"
-        }
+        url="/#create";
     }
 
     //log && console.log(url);
-    
-    
-    
     var hash = location.hash;
     console.log(hash);
-    console.log("Changes");
+    //window.history.pushState({ "content": content }, null, url);
     if (!hash || !hash.length) {
         log && console.log(hash);
-        log && console.log("If State Updated");
-        url = "letter/#create";
+        log && console.log("If State");
         window.history.pushState({"content":content}, null, url);
     } else {
         log && console.log(hash);
