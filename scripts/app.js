@@ -208,7 +208,7 @@ function updateLink(title, zip, push) {
         }
     }else{
         if (hrefSplit[3] == 'letter') {
-            url = "letter/#create";
+            url = "/#create";
         } else {
             url = "letter/#create"
         }
@@ -220,8 +220,8 @@ function updateLink(title, zip, push) {
     console.log(hrefSplit);
     var hash = location.hash;
     console.log(hash);
-    window.history.replaceState({ "content": content }, null, url);
-    /*if (!hash || !hash.length) {
+    
+    if (!hash || !hash.length) {
         log && console.log(hash);
         log && console.log("If State");
         window.history.pushState({"content":content}, null, url);
@@ -229,7 +229,7 @@ function updateLink(title, zip, push) {
         log && console.log(hash);
         log && console.log("Else State");
         window.history.replaceState({"content":content}, null, url);
-    }*/
+    }
     var length = location.href.length;
     log && console.log(`Total size of the document: ${length} bytes`);
     /*QS("#length").innerText = length + " bytes";
