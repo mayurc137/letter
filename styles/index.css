@@ -31,6 +31,15 @@ p{
     --mdc-theme-on-primary:#0077c2;
 }
 
+.dark-font{
+    color:#0077c2;
+}
+
+.letter-count{
+    margin-right:16px;
+    font-weight: 500;
+}
+
 
 [contenteditable]:focus {
     outline: 0px solid transparent;
@@ -50,7 +59,7 @@ p{
 }
 
 
-.app-fab--absolute {
+.fav-desktop {
     position: fixed;
     left:50%;
     top:375px;
@@ -133,8 +142,6 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
    color:#06E26B;
    opacity: 1 !important;
 }
-
-
 
 
 
@@ -234,7 +241,6 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
     top: 200px;
     max-width: 770px;
     margin: 0 auto;
-    margin-bottom:100px;
 }
 
 .examples {
@@ -320,12 +326,25 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
 .home-icon {
     margin-left: 20px;
 }
-
+.fav-mobile{
+    display: none;
+}
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 1) {
 
     .main-grid{
         grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+    .fav-desktop{
+        display: none;
+    }
+
+    .fav-mobile {
+         display: inline-flex;
+         position:fixed;
+         bottom: 5.5rem;
+         right: 1.5rem;
+         
     }
 
 }

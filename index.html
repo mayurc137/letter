@@ -31,24 +31,18 @@
     <div class="top-top-app-bar"></div>
     <div class="mdc-top-app-bar__row ">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
-                style="--mdc-ripple-fg-size:28.8px; --mdc-ripple-fg-scale:1.66667; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">menu</button>
-            <span class="mdc-top-app-bar__title">Letter</span>
+            <span class="mdc-top-app-bar__title dark-font">Letter</span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-            <button class="material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" aria-label="Download"
-                style="--mdc-ripple-fg-size:28.8px; --mdc-ripple-fg-scale:1.66667; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">file_download</button>
+            <span class="letter-count dark-font">2000</span>
             <button class="material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
-                aria-label="Print this page" style="--mdc-ripple-fg-size:28.8px; --mdc-ripple-fg-scale:1.66667; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">print</button>
-            <button class="material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
-                aria-label="Bookmark this page" style="--mdc-ripple-fg-size:28.8px; --mdc-ripple-fg-scale:1.66667; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">bookmark</button>
+                aria-label="Bookmark this page" style="--mdc-ripple-fg-size:28.8px; --mdc-ripple-fg-scale:1.66667; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">link</button>
             <div class="mdc-menu-anchor">
                 <a id="menu-button" class="material-icons mdc-top-app-bar__action-item" aria-label="Bookmark this page" alt="Bookmark this page">more_vert</a>
                 <div class="mdc-menu" style="position: absolute;" tabindex="-1" id="demo-menu">
                     <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
-                        <li class="mdc-list-item billing-link" role="menuitem" tabindex="0">Billing</li>
-                        <li class="mdc-list-item documentation-link" role="menuitem" tabindex="0">Documentation</li>
-                        <li class="mdc-list-item log-out" role="menuitem" tabindex="0">Log Out</li>
+                        <li class="mdc-list-item billing-link" role="menuitem" tabindex="0">About Letter</li>
+                        <li class="mdc-list-item documentation-link" role="menuitem" tabindex="0">Github</li>
                     </ul>
                 </div>
             </div>
@@ -94,10 +88,16 @@
             </div>
         </section>
     </main>
-    <button id="generate-link" class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded" aria-label="Favorite">
+    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded generate-link fav-desktop" aria-label="Favorite">
         <i class="mdc-fab__icon material-icons">link</i>
         <span class="mdc-fab__label">Link</span>
     </button>
+
+    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded generate-link fav-mobile" aria-label="Favorite">
+        <i class="mdc-fab__icon material-icons">link</i>
+        <span class="mdc-fab__label">Link</span>
+    </button>
+
     <div id="mdc-align-start-js-snackbar" class="mdc-snackbar mdc-snackbar--align-start demo-hidden" aria-live="assertive" aria-atomic="true"
         aria-hidden="true">
         <div class="mdc-snackbar__text"></div>

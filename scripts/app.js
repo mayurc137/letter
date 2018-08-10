@@ -87,7 +87,7 @@ var domReady = function () {
     log && console.log(state);
     log && console.log(data);
     
-    $(document).on('change keydown keypress input', 'div[data-placeholder]', function () {
+    $(document).on('change keydown keypress input focus focusout', 'div[data-placeholder]', function () {
         
         if (this.textContent) {
             this.dataset.divPlaceholderContent = 'true';
@@ -111,8 +111,10 @@ var domReady = function () {
             initDocument(data,(content)=>{
                 log && console.log("Init Complete");
                 log && console.log(content);
-                titleDOM.innerHTML = data[0];
+                titleDOM.innerHTML = data[0].split('_').join(' ');
                 contentDOM.innerHTML = content;
+                $("#title").focusout();
+                $("#content").focusout();
             });
         break;
     }
@@ -192,7 +194,7 @@ function updateLink(title, zip, push) {
     } else if(title && !(zip && zip.length)){
         url = "/#" + (title || "untitled") + "?";
     }else if(!title && !(zip && zip.length)){
-        url = "/#create";
+        url = "letter/#create";
     }
     log && console.log(url);
     var hash = location.hash;
