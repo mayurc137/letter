@@ -208,7 +208,7 @@ function updateLink(title, zip, push) {
         }
     }else{
         if (hrefSplit[3] == 'letter') {
-            url = "/#";
+            url = "letter/#create";
         } else {
             url = "letter/#create"
         }
