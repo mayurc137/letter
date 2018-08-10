@@ -225,7 +225,7 @@ function updateLink(title, zip, push) {
     console.log("Changes");
     if (!hash || !hash.length) {
         log && console.log(hash);
-        log && console.log("If State");
+        log && console.log("If State Updated");
         url = "letter/#create";
         window.history.pushState({"content":content}, null, url);
     } else {
