@@ -191,9 +191,10 @@ function updateLink(title, zip, push) {
     //log && console.log(zip);
     if (title) title = encodeURIComponent(title.trim().replace(/\s/g, "_"));
     var url;
-    console.log(hrefSplit);
+    
     var hrefSplit = location.href.split('/');
-
+    console.log(hrefSplit);
+    
     if (zip && zip.length) {
         if(hrefSplit[3] == 'letter'){
             url = "#" + (title || "untitled") + "?" + zip;
