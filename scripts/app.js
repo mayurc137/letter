@@ -191,6 +191,7 @@ function updateLink(title, zip, push) {
     //log && console.log(zip);
     if (title) title = encodeURIComponent(title.trim().replace(/\s/g, "_"));
     var url;
+    console.log(hrefSplit);
     var hrefSplit = location.href.split('/');
 
     if (zip && zip.length) {
@@ -217,7 +218,7 @@ function updateLink(title, zip, push) {
     //log && console.log(url);
     
     
-    console.log(hrefSplit);
+    
     var hash = location.hash;
     console.log(hash);
     
