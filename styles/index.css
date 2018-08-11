@@ -86,6 +86,7 @@ p{
     font-family:zapfino,Cambria,cursive;
     font-weight: bold;
     line-height: 2.4em;
+    font-size:1.5rem;
 }
 
 #author {
@@ -93,6 +94,7 @@ p{
     font-family: zapfino, Cambria, cursive;
     font-weight: bold;
     line-height: 2.4em;
+    font-size:1.5rem;
 }
 #title-placeholder{
     pointer-events: none;

@@ -130,7 +130,7 @@ var domReady = function () {
                 }
                 
                 contentDOM.innerHTML = content;
-
+                authorDOM.innerHTML = author;
                 //updating theme
                 var theme_colors = new Array();
                 if(theme.length){
@@ -150,6 +150,7 @@ var domReady = function () {
 
                 $("#title").focusout();
                 $("#content").focusout();
+                $("#author").focusout();
 
                 titleDOM.contentEditable = false;
                 contentDOM.contentEditable = false;
