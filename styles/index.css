@@ -24,15 +24,24 @@ p{
     margin:0px;
 }
 :root {
-    --mdc-theme-primary: #42a5f5;
-    --mdc-theme-secondary: #ffab40;
+    --mdc-theme-primary: #9E9E9E;
+    --mdc-theme-secondary: #616161;
     --mdc-theme-background: #f6f6f6;
     --mdc-theme-surface: #ffffff;
-    --mdc-theme-on-primary:#0077c2;
+    --mdc-theme-on-primary:#616161;
 }
 
 .dark-font{
-    color:#0077c2;
+    color:#616161;
+}
+.primary-background{
+    background: #9E9E9E;
+}
+.primary-dark-background{
+    background: #616161;
+}
+.accent-background{
+    background: #616161;
 }
 
 .letter-count{
@@ -79,7 +88,7 @@ p{
     line-height: 2.4em;
 }
 
-#annotations {
+#author {
     margin-top:60px;
     font-family: zapfino, Cambria, cursive;
     font-weight: bold;
@@ -164,7 +173,6 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
 }
 
 .top-app-background {
-    background: #42a5f5;
     height: 400px;
     position:fixed;
     width:100%;
@@ -298,7 +306,6 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
 }
 
 .top-top-app-bar{
-    background: #0077c2;
     height:24px;
 }
 

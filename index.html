@@ -28,14 +28,14 @@
         
     </header>
 <header class="mdc-top-app-bar">
-    <div class="top-top-app-bar"></div>
+    <div class="top-top-app-bar primary-dark-background"></div>
     <div class="mdc-top-app-bar__row ">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <span class="mdc-top-app-bar__title dark-font">Letter</span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-            <span class="letter-count dark-font">4000</span>
-            <button class="material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+            <span class="letter-count dark-font allowed-bytes">4000</span>
+            <button class="action-icon generate-link action-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                 aria-label="Bookmark this page" style="--mdc-ripple-fg-size:28.8px; --mdc-ripple-fg-scale:1.66667; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">link</button>
             <div class="mdc-menu-anchor">
                 <a id="menu-button" class="material-icons mdc-top-app-bar__action-item" aria-label="Bookmark this page" alt="Bookmark this page">more_vert</a>
@@ -49,7 +49,7 @@
         </section>
     </div>
 </header>
-<div class="top-app-background">
+<div class="top-app-background primary-background">
 </div>
 <!--header class="mdc-top-app-bar app-bar">
     <div class="mdc-top-app-bar__row top-app-bar">
@@ -82,20 +82,20 @@
                 <div id="content" class="content mdc-typography--body1" contenteditable="true" data-placeholder='Now write something brilliant. (optional)'>
                         
                 </div>
-                <div id="annotations" class="content mdc-typography--body1" contenteditable="true" data-placeholder='Yours faithful,'>
+                <div id="author" class="content mdc-typography--body1" contenteditable="true" data-placeholder='With love,'>
                 
                 </div>
             </div>
         </section>
     </main>
-    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded generate-link fav-desktop" aria-label="Favorite">
-        <i class="mdc-fab__icon material-icons">link</i>
-        <span class="mdc-fab__label">Link</span>
+    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded generate-link action-button fav-desktop" aria-label="Favorite">
+        <i class="mdc-fab__icon material-icons action-icon">link</i>
+        <span class="mdc-fab__label action-label">Link</span>
     </button>
 
-    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded generate-link fav-mobile" aria-label="Favorite">
-        <i class="mdc-fab__icon material-icons">link</i>
-        <span class="mdc-fab__label">Link</span>
+    <button class="mdc-fab app-fab--absolute mdc-fab--extended mdc-ripple-upgraded generate-link action-button fav-mobile" aria-label="Favorite">
+        <i class="mdc-fab__icon material-icons action-icon">link</i>
+        <span class="mdc-fab__label action-label">Link</span>
     </button>
 
     <div id="mdc-align-start-js-snackbar" class="mdc-snackbar mdc-snackbar--align-start demo-hidden" aria-live="assertive" aria-atomic="true"
