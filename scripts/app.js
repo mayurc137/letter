@@ -126,7 +126,7 @@ var domReady = function () {
                 if(data[0]== 'untitled'){
                     titleDOM.innerHTML = 'A letter for you!';
                 }else{
-                    titleDOM.innerHTML = data[0].split('_').join(' ');
+                    titleDOM.innerHTML = decodeURIComponent(data[0].split('_').join(' '));
                 }
                 
                 contentDOM.innerHTML = content;
@@ -250,7 +250,7 @@ var initDocument = (data,callback) =>{
     }
     
     if(dataSplit[2]){
-        author = dataSplit[2];
+        author = decodeURIComponent(dataSplit[2].split('_').join(' '));
     }else{
         //fallback to no author
     }
