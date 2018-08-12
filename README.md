@@ -14,7 +14,7 @@ That means they are...
 🎁 Easy to share as a link are shortened using tiny url 
 
 
-![IMAGE ALT TEXT HERE](https://github.com/mayurc137/letter/raw/master/Letter.png)
+![IMAGE ALT TEXT HERE](https://cdn.dribbble.com/users/2465626/screenshots/4945475/letter.jpg)
 
 
 Letter is inspired from https://github.com/alcor/itty-bitty
