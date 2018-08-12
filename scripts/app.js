@@ -179,6 +179,14 @@ var domReady = function () {
         })
     });*/
 
+    $(".about-link").click(function(){
+        location.href = 'https://github.com/mayurc137/letter/blob/master/README.md';
+    });
+
+    $(".github-link").click(function(){
+        location.href = "https://github.com/mayurc137/letter";
+    });
+
     $(".action-button").click(function(){
 
         //copyLink('Madmax..... Fury....');
