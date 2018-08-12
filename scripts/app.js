@@ -1,4 +1,5 @@
-var log = false;
+
+var log = true;
 log && console.log("Welcome to Letter");
 log && console.log(window.location.hash);
 
@@ -26,6 +27,9 @@ var primary_colors = [{ "color": "green", "pallete": ["#FFEBEE", "#FFCDD2", "#EF
 var accent_colors = [{ "color": "green", "pallete": ["#FF8A80", "#FF5252", "#FF1744", "#D50000"] }, { "color": "pink", "pallete": ["#FF80AB", "#FF4081", "#F50057", "#C51162"] }, { "color": "purple", "pallete": ["#EA80FC", "#E040FB", "#D500F9", "#AA00FF"] }, { "color": "deep_purple", "pallete": ["#B388FF", "#7C4DFF", "#651FFF", "#6200EA"] }, { "color": "indigo", "pallete": ["#8C9EFF", "#536DFE", "#3D5AFE", "#304FFE"] }, { "color": "blue", "pallete": ["#82B1FF", "#448AFF", "#2979FF", "#2962FF"] }, { "color": "light_blue", "pallete": ["#80D8FF", "#40C4FF", "#00B0FF", "#0091EA"] }, { "color": "cyan", "pallete": ["#84FFFF", "#18FFFF", "#00E5FF", "#00B8D4"] }, { "color": "teal", "pallete": ["#A7FFEB", "#64FFDA", "#1DE9B6", "#00BFA5"] }, { "color": "green", "pallete": ["#B9F6CA", "#69F0AE", "#00E676", "#00C853"] }, { "color": "light_green", "pallete": ["#CCFF90", "#B2FF59", "#76FF03", "#64DD17"] }, { "color": "lime", "pallete": ["#F4FF81", "#EEFF41", "#C6FF00", "#AEEA00"] }, { "color": "yellow", "pallete": ["#FFFF8D", "#FFFF00", "#FFEA00", "#FFD600"] }, { "color": "amber", "pallete": ["#FFE57F", "#FFD740", "#FFC400", "#FFAB00"] }, { "color": "orange", "pallete": ["#FFD180", "#FFAB40", "#FF9100", "#FF6D00"] }, { "color": "deep_orange", "pallete": ["#FF9E80", "#FF6E40", "#FF3D00", "#DD2C00"] }];
 var allowed_bytes_threshold = 2000;
 var allowed_bytes;
+var isLink = false;
+var tinyLink = 'tinyurl';
+
 
 if(hash){
     data = href.slice(href.indexOf('#') + 1).split('?');    
@@ -42,6 +46,7 @@ if(hash){
 }
 
 
+
 var getUrlVars = () => {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('#') + 1).split('&');
@@ -54,7 +59,7 @@ var authorDOM = document.getElementById("author");
 var domReady = function () {
     log && console.log("Dom loaded successfully");
     mdc.autoInit();
-
+    
     [].forEach.call(document.querySelectorAll('.mdc-button'), function (surface) {
         mdc.ripple.MDCRipple.attachTo(surface);
     });
@@ -175,6 +180,8 @@ var domReady = function () {
     });*/
 
     $(".action-button").click(function(){
+
+        //copyLink('Madmax..... Fury....');
         if ($(this).hasClass('generate-link')) {
             log && console.log("Generating the link");
             log && console.log(content);
@@ -183,19 +190,44 @@ var domReady = function () {
                 if (allowed_bytes >= 0) {
                     link = `${parentLink}/${hash}`;
                     log && console.log(link);
+                    copyLink(link);
                     $(".progress").show();
-                    shortenLink(link, (shortLink) => {
+                    
+                    shortenLink(link, function(shortLink){
                         log && console.log(shortLink);
-                        navigator.clipboard.writeText(shortLink);
-                        invokeSnackbar('Link copied to clipboard');
-                        $(".progress").hide();
+                        try {
+                            navigator.clipboard.writeText(shortLink);
+                            invokeSnackbar('Link copied to clipboard')  
+                            $(".progress").hide();
+                        } catch (error) {
+                            invokeSnackbar('Copied! Try chrome for tinyurl');
+                            $(".progress").hide();
+                        }
+                        
+                        tinyLink = shortLink;
+                        isLink = true;
                     });
+                    
+                    /*setTimeout(() => {
+                        log && console.log(tinyLink);
+                        copyLink(tinyLink);    
+                        $(".progress").hide();
+                    }, 2000);*/
+
+                    
+                    
+                    /*shortenLink(link, (shortLink) => {
+                        log && console.log(shortLink);
+                        //navigator.clipboard.writeText(shortLink);
+                    });*/
                 } else {
                     invokeSnackbar('Letter supports 2000 characters');
                 }
 
-            } else {
-                invokeSnackbar('Ooop!! No content?')
+            } else if (link == `${parentLink}/${hash}`) {
+                invokeSnackbar('Already copied to clipboard');
+            }else{
+                invokeSnackbar('Ooop!! No content?');
             }
         } else {
             log && console.log("New Letter");
@@ -203,6 +235,7 @@ var domReady = function () {
         }
     });
 
+    
 
     interval = setInterval(()=>{
         if(contentUpdated){
@@ -223,6 +256,7 @@ var domReady = function () {
             log && console.log("Unaltered");
         }
     },1000);
+
 
 
 };
@@ -288,7 +322,9 @@ function updateLink(title, zip, author) {
     if (!hash || !hash.length) {
         log && console.log(hash);
         log && console.log("If State");
-        window.history.pushState({"content":content}, null, url);
+        log && console.log(url);
+        if(url)
+            window.history.pushState({"content":content}, null, url);
     } else {
         log && console.log(hash);
         log && console.log("Else State");
@@ -323,6 +359,12 @@ function handleInput(e,log = false) {
     log && console.log(content);
     log && console.log(title);
     contentUpdated = true;
+    if(title){
+        $(document).attr("title", title);
+    }else{
+        //do nothing 
+    }
+    
     /*
     */
 }
@@ -410,4 +452,17 @@ var randomizeColors = () =>{
     return [return_primary,return_primary_dark,return_accent];
 
         
+}
+
+
+
+function copyLink(text) {
+    console.log("Copy Link Invoked");
+    console.log(text);
+    var dummy = document.createElement("input");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
 }
